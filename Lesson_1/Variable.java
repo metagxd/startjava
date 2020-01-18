@@ -11,6 +11,6 @@ public class Variable {
         System.out.println("Количество ядер: " + cores + "\n" + "Количество потоков " + threads + "\n" + 
             "Частота процессора: " + freq + " GHz \n" + "Количество оперативной памяти : " + mem + " MB\n" + 
             "Количество видеопамяти " + gpu_mem + " MB\n" + "Частота видеоядра " + gpu_freq + " GHz\n" + 
-            "Частота видеопамяти " + gpu_mem_freq + " MHz\n" + "На грантии: " + isWarranty);
+            "Частота видеопамяти " + (int) gpu_mem_freq + " MHz\n" + "На грантии: " + isWarranty);
     }
 }
