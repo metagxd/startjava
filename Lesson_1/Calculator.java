@@ -26,6 +26,6 @@ public class Calculator {
                 res = x % y;
                 System.out.println(res);
             }
-        } else System.out.println("Ошибка!");
+        } else System.out.println("Error!");
     }
 }

@@ -3,20 +3,20 @@ import java.util.Scanner;
 
 public class MyFirstGame {
     public static void main(String[] args) {
-        int unknownNumber =(int) (Math.random()*100); //никогда не будет 100
-        int x = 0;
-//        System.out.println(unknownNumber);
-        System.out.println ("Попробуйте угадать число от 0 до 100:");
+        int unknownNumber =(int) (Math.random()*101);
+        int suposedNumber = 0;
+        System.out.println(unknownNumber);
+        System.out.println("Guess a number from 0 to 100:");
         Scanner in = new Scanner(System.in);
         do {
-            System.out.println ("Введите число: ");
-            x = in.nextInt();
-            if (x < unknownNumber) {
-            System.out.println ("Введенное вами число меньше!");
-            } else if (x > unknownNumber) {
-            System.out.println ("Введенное вами число больше!");
+            System.out.println("Type a number and press 'Enter': ");
+            suposedNumber = in.nesuposedNumbertInt();
+            if (suposedNumber < unknownNumber) {
+                System.out.println("Typed number is less!");
+            } else if (suposedNumber > unknownNumber) {
+                System.out.println("Typed number is bigger!");
             }
-        } while (x != unknownNumber);
-        System.out.println ("Поздравляем! Вы угадали!");
+        } while (suposedNumber != unknownNumber);
+        System.out.println("Congratulation! You won! The number is: " + unknownNumber);
     }
 }

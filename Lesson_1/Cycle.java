@@ -1,10 +1,10 @@
 public class Cycle {
     public static void main(String[] args) {
-        System.out.println("Числа от 0 до 20: ");
+        System.out.println("Numbers from 0 to 20: ");
         for (int i = 0; i <= 20 ; i++) {
             System.out.println(i);
         }
-        System.out.println("Числа от 6 до -6 с шагом 2: ");
+        System.out.println("Numbers from 6 to -6 (step 2): ");
         int j = 6;
         while (j >= -6) {
             System.out.println(j);
@@ -12,7 +12,7 @@ public class Cycle {
         }
         int k = 10;
         int res = 0;
-        System.out.println("Нечетные числа от 10 до 20: ");
+        System.out.println("Odd numbers from 10 to 20: ");
         do {
             if (k%2!=0) {
                 System.out.println(k);

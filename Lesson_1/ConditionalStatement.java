@@ -5,23 +5,23 @@ public class ConditionalStatement {
         String sex = "male";
         int height = 175;
         if (age > 20) {
-            System.out.println("Вам больше 20.");
+            System.out.println("You're over 20 years old.");
         }
         if (sex.equals("male")){
-            System.out.println("Вы мужчина.");
+            System.out.println("You're a man.");
         }
         if (!sex.equals("male")){
-            System.out.println("Вы женщина.");
+            System.out.println("You're a woman.");
         }
         if (height < 180) {
-            System.out.println("Вы не высокий.");
+            System.out.println("You're not tall.");
         } else {
-            System.out.println("Вы высокий.");
+            System.out.println("You're tall.");
         }
         if (name.charAt(0) == 'M') {
-            System.out.println("Вы, возможно, Максим.");
+            System.out.println("You, probably, Max.");
         } else if (name.charAt(0) == 'I') {
-            System.out.println("Вы, возможно, Иван.");
-        } else System.out.println("Кто вы?");
+            System.out.println("You, probably, Ivan.");
+        } else System.out.println("Who are you?");
     }
 }
