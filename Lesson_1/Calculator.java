@@ -4,7 +4,8 @@ public class Calculator {
         int y = 5;
         int result = 1;
         String operation = "*";
-        if (x > 0 && y > 0 ) {//проверка входных данных
+
+        if (x > 0 && y > 0) {//проверка входных данных
             if (operation.equals("+")) {
                 result = x + y;
                 System.out.println(result);
