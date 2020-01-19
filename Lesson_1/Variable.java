@@ -6,7 +6,7 @@ public class Variable {
         long mem = 32768;
         int gpuMem = 8092;
         double gpuFreq = 1.9;
-        char gpuMemFreq = 8000; //не выводиться значение, только знак вопроса
+        char gpuMemFreq = 8000;
         boolean isWarranty = true;
 
         System.out.println("Number of cores: " + cores + "\n" + "Number of threads: " + threads + "\n" + 

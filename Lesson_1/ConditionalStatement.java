@@ -1,23 +1,26 @@
 public class ConditionalStatement {
     public static void main(String[] args) {
-        String name = "Artyom";
+
         int age = 26;
-        String sex = "male";
-        int height = 175;
         if (age > 20) {
             System.out.println("You're over 20 years old.");
         }
-        if (sex.equals("male")){
+
+        boolean isMan = true;
+        if (isMan) {
             System.out.println("You're a man.");
-        }
-        if (!sex.equals("male")){
+        } else {
             System.out.println("You're a woman.");
         }
+
+        int height = 175;
         if (height < 180) {
             System.out.println("You're not tall.");
         } else {
             System.out.println("You're tall.");
         }
+
+        String name = "Artyom";
         if (name.charAt(0) == 'M') {
             System.out.println("You, probably, Max.");
         } else if (name.charAt(0) == 'I') {
