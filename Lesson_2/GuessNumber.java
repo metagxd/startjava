@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private int unknownNumber;
-    private int supposedNumber;
     private int count = 0;
 
     public int getCount() {
@@ -15,6 +13,7 @@ public class GuessNumber {
         //System.out.println(unknownNumber);
         System.out.println("guess a number from 0 to 100!");
         Scanner input = new Scanner(System.in);
+        int supposedNumber = 0;
         do {
             System.out.println("Type a number and press 'Enter': ");
             count++;
