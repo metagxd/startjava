@@ -26,7 +26,7 @@ public class CalculatorTest {
                 answer = "Yes";
                 break;
             }
-        } while (answer != "Yes");
+        } while (!("Yes").equals(answer));
         System.out.println("Result: " + firstCalculation.calculation());
     }
 }

@@ -6,24 +6,24 @@ public class Calculator {
         String operation = "*";
 
         if (x > 0 && y > 0) {//проверка входных данных
-            if (operation.equals("+")) {
+            if (("+").equals(operation)) {
                 result = x + y;
                 System.out.println(result);
-            } else if (operation.equals("-")) {
+            } else if (("-").equals(operation)) {
                 result = x - y;
                 System.out.println(result);
-            } else if (operation.equals("*")) {
+            } else if (("*").equals(operation)) {
                 result = x * y;
                 System.out.println(result);
-            } else if (operation.equals("/")) {
+            } else if (("/").equals(operation)) {
                 result = x / y;
                 System.out.println(result);
-            } else if (operation.equals("^")) {
+            } else if (("^").equals(operation)) {
                 for (int i = 1; i <= y ; i++) {//цикл возведения в степень
                     result *= x;
                 }
                 System.out.println(result);
-            } else if (operation.equals("%")) {
+            } else if (("%").equals(operation)) {
                 result = x % y;
                 System.out.println(result);
             }
