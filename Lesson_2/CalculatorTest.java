@@ -14,19 +14,20 @@ public class CalculatorTest {
 
         System.out.print("Type second number: ");
         firstCalculation.setSecondNumber(input.nextInt());
-        String answer = "No";
+        boolean isAnswerOk = false;
         do {
             System.out.print("Continue? [Yes/No]: ");
-            answer = input.next();
+            String answer = input.next();
             switch (answer) {
                 case "No":
                 System.out.println("Aborting...");
-                System.exit(1);
+                isAnswerOk = true;
+                break;
                 case "Yes":
                 answer = "Yes";
-                break;
+                isAnswerOk = true;
+                System.out.println("Result: " + firstCalculation.calculation());
             }
-        } while (!("Yes").equals(answer));
-        System.out.println("Result: " + firstCalculation.calculation());
+        } while (!isAnswerOk);
     }
 }
