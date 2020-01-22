@@ -3,31 +3,33 @@ import java.util.Scanner;
 public class CalculatorTest {
 
     public static void main(String[] args) {
-        Calculator firstCalculation = new Calculator();
+        Calculator calculator = new Calculator();
         Scanner input = new Scanner(System.in);
 
         System.out.print("Type first number: ");
-        firstCalculation.setFirstNumber(input.nextInt());
+        calculator.setFirstNumber(input.nextInt());
 
         System.out.print("Type operation: ");
-        firstCalculation.setOperation((input.next()).charAt(0));
+        calculator.setOperation((input.next()).charAt(0));
 
         System.out.print("Type second number: ");
-        firstCalculation.setSecondNumber(input.nextInt());
-        boolean isAnswerOk = false;
+        calculator.setSecondNumber(input.nextInt());
+        String answer = "";
         do {
             System.out.print("Continue? [Yes/No]: ");
-            String answer = input.next();
+            answer = input.next();
             switch (answer) {
                 case "No":
-                System.out.println("Aborting...");
-                isAnswerOk = true;
-                break;
+                    System.out.println("Aborting...");
+                    break;
                 case "Yes":
-                answer = "Yes";
-                isAnswerOk = true;
-                System.out.println("Result: " + firstCalculation.calculation());
+                    answer = "Yes";
+                    System.out.println("Result: " + calculator.calculate());
+                    break;
+                default:
+                    System.out.println("Try again.");
+                    break;
             }
-        } while (!isAnswerOk);
+        } while (!("Yes".equals(answer) | "No".equals(answer)));
     }
 }
