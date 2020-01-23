@@ -29,14 +29,18 @@ public class Calculator {
     }
 
     public void setOperation(char operation) {
-        if (operation != '+' && operation != '-' && operation != '*' && operation != '/' && operation != '%' &&operation != '^') {
+        if (!isOperationCorrect(operation)) {
             System.out.println("Incorrect math operation!");
         } else {
             this.operation = operation;
         }
     }
 
-    public  boolean isOperationCorrect() {
+    public char getOperation() {
+        return operation;
+    }
+
+    public  boolean isOperationCorrect(char operation) {
         return (operation == '+' || operation == '-' || operation == '*'
         || operation == '/' || operation == '%' || operation == '^');
     }

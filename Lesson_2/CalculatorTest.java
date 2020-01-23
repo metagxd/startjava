@@ -14,12 +14,12 @@ public class CalculatorTest {
             calculator.setOperation((input.next()).charAt(0));
         }
 
-        if (calculator.isOperationCorrect()) {
+        if (calculator.isOperationCorrect(calculator.getOperation())) {
             System.out.print("Type second number: ");
             calculator.setSecondNumber(input.nextInt());
         }
 
-        if (calculator.getFirstNumber() > 0 && calculator.getSecondNumber() > 0 && calculator.isOperationCorrect()) {
+        if (calculator.getFirstNumber() > 0 && calculator.getSecondNumber() > 0 && calculator.isOperationCorrect(calculator.getOperation())) {
             String answer;
             do {
                 System.out.print("Continue? [Yes/No]: ");
