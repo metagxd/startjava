@@ -1,23 +1,31 @@
 public class Calculator {
 
-    private int firstNumber = 0;
-    private int secondNumber = 0;
-    private char operation = '1';
+    private int firstNumber;
+    private int secondNumber;
+    private char operation;
 
     public void setFirstNumber(int firstNumber) {
-        if (firstNumber < 0) {
+        if (firstNumber <= 0) {
             System.out.println("Incorrect number!");
         } else {
             this.firstNumber = firstNumber;
         }
     }
 
+    public int getFirstNumber() {
+        return firstNumber;
+    }
+
     public void setSecondNumber(int secondNumber) {
-        if (firstNumber < 0) {
+        if (secondNumber <= 0) {
             System.out.println("Incorrect number!");
         } else {
             this.secondNumber = secondNumber;
         }
+    }
+
+    public int getSecondNumber() {
+        return secondNumber;
     }
 
     public void setOperation(char operation) {
@@ -28,9 +36,14 @@ public class Calculator {
         }
     }
 
+    public  boolean isOperationCorrect() {
+        return (operation == '+' || operation == '-' || operation == '*'
+        || operation == '/' || operation == '%' || operation == '^');
+    }
+
     public int calculate() {
-        int result = 0;
-        
+        int result;
+
         switch(operation) {
             case '+':
                 result = firstNumber + secondNumber;

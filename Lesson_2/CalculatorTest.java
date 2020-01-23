@@ -9,27 +9,35 @@ public class CalculatorTest {
         System.out.print("Type first number: ");
         calculator.setFirstNumber(input.nextInt());
 
-        System.out.print("Type operation: ");
-        calculator.setOperation((input.next()).charAt(0));
+        if (calculator.getFirstNumber() > 0) {
+            System.out.print("Type operation: ");
+            calculator.setOperation((input.next()).charAt(0));
+        }
 
-        System.out.print("Type second number: ");
-        calculator.setSecondNumber(input.nextInt());
-        String answer = "";
-        do {
-            System.out.print("Continue? [Yes/No]: ");
-            answer = input.next();
-            switch (answer) {
-                case "No":
-                    System.out.println("Aborting...");
-                    break;
-                case "Yes":
-                    answer = "Yes";
-                    System.out.println("Result: " + calculator.calculate());
-                    break;
-                default:
-                    System.out.println("Try again.");
-                    break;
-            }
-        } while (!("Yes".equals(answer) | "No".equals(answer)));
+        if (calculator.isOperationCorrect()) {
+            System.out.print("Type second number: ");
+            calculator.setSecondNumber(input.nextInt());
+        }
+
+        if (calculator.getFirstNumber() > 0 && calculator.getSecondNumber() > 0 && calculator.isOperationCorrect()) {
+            String answer;
+            do {
+                System.out.print("Continue? [Yes/No]: ");
+                answer = input.next();
+                switch (answer) {
+                    case "No":
+                        System.out.println("Aborting...");
+                        break;
+                    case "Yes":
+                        System.out.println("Result: " + calculator.calculate());
+                        break;
+                    default:
+                        System.out.println("Try again.");
+                        break;
+                }
+            } while (!("Yes".equals(answer) || "No".equals(answer)));
+        } else {
+            System.out.println("Error!");
+        }
     }
 }
