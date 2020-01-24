@@ -35,6 +35,16 @@ public class Calculator {
         }
     }
 
+    public boolean isInt(String number) {
+        try {
+            Integer.parseInt(number);
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
     public int calculate() {
         int result;
 
