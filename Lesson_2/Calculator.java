@@ -4,45 +4,35 @@ public class Calculator {
     private int secondNumber;
     private char operation;
 
-    public void setFirstNumber(int firstNumber) {
+    public boolean setFirstNumber(int firstNumber) {
         if (firstNumber <= 0) {
             System.out.println("Incorrect number!");
+            return false;
         } else {
             this.firstNumber = firstNumber;
+            return  true;
         }
     }
 
-    public int getFirstNumber() {
-        return firstNumber;
-    }
-
-    public void setSecondNumber(int secondNumber) {
+    public boolean setSecondNumber(int secondNumber) {
         if (secondNumber <= 0) {
             System.out.println("Incorrect number!");
+            return false;
         } else {
             this.secondNumber = secondNumber;
+            return true;
         }
     }
 
-    public int getSecondNumber() {
-        return secondNumber;
-    }
-
-    public void setOperation(char operation) {
-        if (!isOperationCorrect(operation)) {
+    public boolean setOperation(char operation) {
+        if (!(operation == '+' || operation == '-' || operation == '*'
+            || operation == '/' || operation == '%' || operation == '^')) {
             System.out.println("Incorrect math operation!");
+            return false;
         } else {
             this.operation = operation;
+            return true;
         }
-    }
-
-    public char getOperation() {
-        return operation;
-    }
-
-    public  boolean isOperationCorrect(char operation) {
-        return (operation == '+' || operation == '-' || operation == '*'
-        || operation == '/' || operation == '%' || operation == '^');
     }
 
     public int calculate() {

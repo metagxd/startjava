@@ -6,21 +6,19 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Type first number: ");
-        calculator.setFirstNumber(input.nextInt());
+        do {
+            System.out.print("Type first number: ");
+        } while (!(calculator.setFirstNumber(input.nextInt())));
 
-        if (calculator.getFirstNumber() > 0) {
+        do {
             System.out.print("Type operation: ");
-            calculator.setOperation((input.next()).charAt(0));
-        }
+        } while (!(calculator.setOperation((input.next()).charAt(0))));
 
-        if (calculator.isOperationCorrect(calculator.getOperation())) {
+        do {
             System.out.print("Type second number: ");
-            calculator.setSecondNumber(input.nextInt());
-        }
+        } while (!(calculator.setSecondNumber(input.nextInt())));
 
-        if (calculator.getFirstNumber() > 0 && calculator.getSecondNumber() > 0 && calculator.isOperationCorrect(calculator.getOperation())) {
-            String answer;
+        String answer;
             do {
                 System.out.print("Continue? [Yes/No]: ");
                 answer = input.next();
@@ -36,8 +34,5 @@ public class CalculatorTest {
                         break;
                 }
             } while (!("Yes".equals(answer) || "No".equals(answer)));
-        } else {
-            System.out.println("Error!");
-        }
     }
 }
