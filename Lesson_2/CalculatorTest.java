@@ -5,19 +5,10 @@ public class CalculatorTest {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         Scanner input = new Scanner(System.in);
-        int value = 0;
 
         do {
             System.out.print("Type first number: ");
-            String number = input.next();
-            while (!calculator.isInt(number)) {
-                System.out.print("Error! Not a numeric! Try again: ");
-                number = input.next();
-            }
-            if (calculator.isInt(number)) {
-                value = Integer.parseInt(number);
-            }
-        } while (!(calculator.setFirstNumber(value)));
+        } while (!calculator.setFirstNumber(calculator.scanNumber()));
 
         do {
             System.out.print("Type operation: ");
@@ -25,15 +16,7 @@ public class CalculatorTest {
 
         do {
             System.out.print("Type second number: ");
-            String number = input.next();
-            while (!calculator.isInt(number)) {
-                System.out.print("Error! Not a numeric! Try again: ");
-                number = input.next();
-            }
-            if (calculator.isInt(number)) {
-                value = Integer.parseInt(number);
-            }
-        } while (!(calculator.setSecondNumber(value)));
+        } while (!calculator.setSecondNumber(calculator.scanNumber()));
 
         String answer;
             do {

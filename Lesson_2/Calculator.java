@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 public class Calculator {
 
     private int firstNumber;
     private int secondNumber;
     private char operation;
+    private boolean isNumberCorrect = false;
 
     public boolean setFirstNumber(int firstNumber) {
         if (firstNumber <= 0) {
@@ -10,7 +13,7 @@ public class Calculator {
             return false;
         } else {
             this.firstNumber = firstNumber;
-            return  true;
+            return true;
         }
     }
 
@@ -35,14 +38,19 @@ public class Calculator {
         }
     }
 
-    public boolean isInt(String number) {
-        try {
-            Integer.parseInt(number);
-        }
-        catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
+    public int scanNumber() {
+        int number = 0;
+        Scanner input = new Scanner(System.in);
+        do {
+            boolean isOk = input.hasNextInt();
+            if (isOk) {
+                number = input.nextInt();
+                isNumberCorrect = true;
+            } else if (!isOk) {
+                break;
+            }
+        } while (!isNumberCorrect);
+        return number;
     }
 
     public int calculate() {
