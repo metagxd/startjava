@@ -22,16 +22,17 @@ public class CalculatorTest {
             do {
                 System.out.print("Continue? [Yes/No]: ");
                 answer = input.next();
+
                 switch (answer) {
-                    case "No":
-                        System.out.println("Aborting...");
-                        break;
-                    case "Yes":
-                        System.out.println("Result: " + calculator.calculate());
-                        break;
-                    default:
-                        System.out.println("Try again.");
-                        break;
+                case "No":
+                    System.out.println("Aborting...");
+                    break;
+                case "Yes":
+                    System.out.println("Result: " + calculator.calculate());
+                    break;
+                default:
+                    System.out.println("Try again.");
+                    break;
                 }
             } while (!("Yes".equals(answer) || "No".equals(answer)));
     }

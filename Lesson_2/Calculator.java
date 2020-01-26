@@ -11,20 +11,18 @@ public class Calculator {
         if (firstNumber <= 0) {
             System.out.println("Incorrect number!");
             return false;
-        } else {
-            this.firstNumber = firstNumber;
-            return true;
         }
+        this.firstNumber = firstNumber;
+        return true;
     }
 
     public boolean setSecondNumber(int secondNumber) {
         if (secondNumber <= 0) {
             System.out.println("Incorrect number!");
             return false;
-        } else {
-            this.secondNumber = secondNumber;
-            return true;
         }
+        this.secondNumber = secondNumber;
+        return true;
     }
 
     public boolean setOperation(char operation) {
@@ -32,22 +30,21 @@ public class Calculator {
             || operation == '/' || operation == '%' || operation == '^')) {
             System.out.println("Incorrect math operation!");
             return false;
-        } else {
-            this.operation = operation;
-            return true;
         }
+        this.operation = operation;
+        return true;
     }
 
     public int scanNumber() {
         int number = 0;
         Scanner input = new Scanner(System.in);
         do {
-            boolean isOk = input.hasNextInt();
-            if (isOk) {
+            if (input.hasNextInt()) {
                 number = input.nextInt();
                 isNumberCorrect = true;
-            } else if (!isOk) {
-                break;
+            } else {
+                System.out.println("Error!");
+                input.next();
             }
         } while (!isNumberCorrect);
         return number;
