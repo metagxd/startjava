@@ -1,27 +1,32 @@
 import java.util.Scanner;
 
 public class GuessNumber {
+    private Player player1;
+    private Player player2;
 
-    private int count;
-
-    public int getCount() {
-        return count;
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
-    public void startGame(Player player1, Player player2) {
+    public void start() {
         Scanner input = new Scanner(System.in);
 
         System.out.print(player1.getName() + ", guess number: ");
+        
+        player1.resetAttempts();
+
         player1.setNumber(input.nextInt());
 
-        game(player1.getNumber());
-        player1.setAttempts(count);
+        game(player1);
 
         System.out.print(player2.getName() + ", guess number: ");
+
+        player2.resetAttempts();
+
         player2.setNumber(input.nextInt());
 
-        game(player2.getNumber());
-        player2.setAttempts(count);
+        game(player2);
 
         if (player1.getAttempts() < player2.getAttempts()) {
             System.out.println("Congratulation! The winner is :" + player1.getName());
@@ -32,14 +37,13 @@ public class GuessNumber {
         }
     }
 
-    private void game(int number) {
+    private void game(Player player) {
         int unknownNumber = (int) (Math.random() * 101);
-        //System.out.println(unknownNumber);
+        System.out.println(unknownNumber);
         Scanner input = new Scanner(System.in);
-        int supposedNumber = number;
-        count = 1;
+        int supposedNumber = player.getNumber();
         while (supposedNumber != unknownNumber) {
-            count++;
+            player.setAttempts();
             if (supposedNumber < unknownNumber) {
                 System.out.println("Your number is less!");
             } else if (supposedNumber > unknownNumber) {
@@ -48,6 +52,6 @@ public class GuessNumber {
             supposedNumber = input.nextInt();
         }
         System.out.println("Right, the number is: " + unknownNumber + "\nNumber of attemts: "
-        + count);
+        + player.getAttempts());
     }
 }

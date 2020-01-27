@@ -2,7 +2,7 @@ public class Player {
 
     private String name;
     private int number;
-    private int attempts;
+    private int attempts = 1;
 
     public Player(String name) {
         this.name = name;
@@ -20,8 +20,12 @@ public class Player {
         return number;
     }
 
-    public void setAttempts(int attempts) {
-        this.attempts = attempts;
+    public void setAttempts() {
+        attempts++;
+    }
+
+    public void resetAttempts() {
+        attempts = 1;
     }
 
     public int getAttempts() {
