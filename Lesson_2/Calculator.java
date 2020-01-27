@@ -1,11 +1,8 @@
-import java.util.Scanner;
-
 public class Calculator {
 
     private int firstNumber;
     private int secondNumber;
     private char operation;
-    private boolean isNumberCorrect = false;
 
     public boolean setFirstNumber(int firstNumber) {
         if (firstNumber <= 0) {
@@ -33,21 +30,6 @@ public class Calculator {
         }
         this.operation = operation;
         return true;
-    }
-
-    public int scanNumber() {
-        int number = 0;
-        Scanner input = new Scanner(System.in);
-        do {
-            if (input.hasNextInt()) {
-                number = input.nextInt();
-                isNumberCorrect = true;
-            } else {
-                System.out.println("Error!");
-                input.next();
-            }
-        } while (!isNumberCorrect);
-        return number;
     }
 
     public int calculate() {

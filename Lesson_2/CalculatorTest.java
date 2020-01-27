@@ -5,10 +5,17 @@ public class CalculatorTest {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         Scanner input = new Scanner(System.in);
+        int number = 0;
 
         do {
             System.out.print("Type first number: ");
-        } while (!calculator.setFirstNumber(calculator.scanNumber()));
+            if (input.hasNextInt()) {
+                number = input.nextInt();
+            } else {
+                System.out.println("Error!");
+                input.next();
+            }
+        } while (!calculator.setFirstNumber(number));
 
         do {
             System.out.print("Type operation: ");
@@ -16,24 +23,31 @@ public class CalculatorTest {
 
         do {
             System.out.print("Type second number: ");
-        } while (!calculator.setSecondNumber(calculator.scanNumber()));
+            if (input.hasNextInt()) {
+                number = input.nextInt();
+            } else {
+                System.out.println("Error!");
+                number = 0;
+                input.next();
+            }
+        } while (!calculator.setSecondNumber(number));
 
         String answer;
-            do {
-                System.out.print("Continue? [Yes/No]: ");
-                answer = input.next();
+        do {
+            System.out.print("Continue? [Yes/No]: ");
+            answer = input.next();
 
-                switch (answer) {
-                case "No":
-                    System.out.println("Aborting...");
-                    break;
-                case "Yes":
-                    System.out.println("Result: " + calculator.calculate());
-                    break;
-                default:
-                    System.out.println("Try again.");
-                    break;
-                }
-            } while (!("Yes".equals(answer) || "No".equals(answer)));
+            switch (answer) {
+            case "No":
+                System.out.println("Aborting...");
+                break;
+            case "Yes":
+                System.out.println("Result: " + calculator.calculate());
+                break;
+            default:
+                System.out.println("Try again.");
+                break;
+            }
+        } while (!("Yes".equals(answer) || "No".equals(answer)));
     }
 }
