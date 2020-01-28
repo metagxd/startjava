@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class GuessNumber {
     private Player player1;
     private Player player2;
+    private Scanner input  = new Scanner(System.in);
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -10,24 +11,14 @@ public class GuessNumber {
     }
 
     public void start() {
-        Scanner input = new Scanner(System.in);
-
         System.out.print(player1.getName() + ", guess number: ");
-        
         player1.resetAttempts();
-
         player1.setNumber(input.nextInt());
-
-        game(player1);
-
+        play(player1);
         System.out.print(player2.getName() + ", guess number: ");
-
         player2.resetAttempts();
-
         player2.setNumber(input.nextInt());
-
-        game(player2);
-
+        play(player2);
         if (player1.getAttempts() < player2.getAttempts()) {
             System.out.println("Congratulation! The winner is :" + player1.getName());
         } else if (player1.getAttempts() > player2.getAttempts()) {
@@ -37,10 +28,9 @@ public class GuessNumber {
         }
     }
 
-    private void game(Player player) {
+    private void play(Player player) {
         int unknownNumber = (int) (Math.random() * 101);
         System.out.println(unknownNumber);
-        Scanner input = new Scanner(System.in);
         int supposedNumber = player.getNumber();
         while (supposedNumber != unknownNumber) {
             player.setAttempts();
