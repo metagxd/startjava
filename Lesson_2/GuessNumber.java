@@ -11,37 +11,37 @@ public class GuessNumber {
     }
 
     public void start() {
-        System.out.print(player1.getName() + ", guess number: ");
-        player1.resetAttempts();
-        player1.setNumber(input.nextInt());
-        play(player1);
-        System.out.print(player2.getName() + ", guess number: ");
-        player2.resetAttempts();
-        player2.setNumber(input.nextInt());
-        play(player2);
-        if (player1.getAttempts() < player2.getAttempts()) {
-            System.out.println("Congratulation! The winner is :" + player1.getName());
-        } else if (player1.getAttempts() > player2.getAttempts()) {
-            System.out.println("Congratulation! The winner is :" + player2.getName());
-        } else {
-            System.out.println("Congratulation! Tie!");
+        int unknownNumber = (int) (Math.random() * 101);
+        int supposedNumber;
+        
+        System.out.println("Guess number from 1 to 100.");
+        do {
+            //System.out.println(unknownNumber);
+            System.out.print(player1.getName() + ", your turn: ");
+            player1.setNumber(input.nextInt());
+            supposedNumber = player1.getNumber();
+            compare(unknownNumber, supposedNumber);
+            if (supposedNumber != unknownNumber) {
+                System.out.print(player2.getName() + ", your turn: ");
+                player2.setNumber(input.nextInt());
+                supposedNumber = player2.getNumber();
+                compare(unknownNumber, supposedNumber);
+            }
+        } while (supposedNumber != unknownNumber);
+        if (player1.getNumber() == supposedNumber) {
+            System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
+            + "\nThe winner is "  + player1.getName());
+        } else{
+            System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
+            + "\nThe winner is "  + player2.getName());
         }
     }
 
-    private void play(Player player) {
-        int unknownNumber = (int) (Math.random() * 101);
-        System.out.println(unknownNumber);
-        int supposedNumber = player.getNumber();
-        while (supposedNumber != unknownNumber) {
-            player.setAttempts();
-            if (supposedNumber < unknownNumber) {
-                System.out.println("Your number is less!");
-            } else if (supposedNumber > unknownNumber) {
-                System.out.println("Your number is bigger!");
-            }
-            supposedNumber = input.nextInt();
+    private void compare(int unknownNumber, int supposedNumber) {
+        if (supposedNumber < unknownNumber) {
+            System.out.println("Your number is less!");
+        } else if (supposedNumber > unknownNumber) {
+            System.out.println("Your number is bigger!");
         }
-        System.out.println("Right, the number is: " + unknownNumber + "\nNumber of attemts: "
-        + player.getAttempts());
     }
 }
