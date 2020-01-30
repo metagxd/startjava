@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class GuessNumber {
     private Player player1;
     private Player player2;
+    private int unknownNumber;
+    private int supposedNumber;
     private Scanner input  = new Scanner(System.in);
 
     public GuessNumber(Player player1, Player player2) {
@@ -11,37 +13,37 @@ public class GuessNumber {
     }
 
     public void start() {
-        int unknownNumber = (int) (Math.random() * 101);
-        int supposedNumber;
-        
+        unknownNumber = (int) (Math.random() * 101);
+
         System.out.println("Guess number from 1 to 100.");
-        do {
+            while (true) {
+                if (supposedNumber == unknownNumber) {
+                    break;
+                }
             //System.out.println(unknownNumber);
-            System.out.print(player1.getName() + ", your turn: ");
-            player1.setNumber(input.nextInt());
-            supposedNumber = player1.getNumber();
-            compare(unknownNumber, supposedNumber);
-            if (supposedNumber != unknownNumber) {
-                System.out.print(player2.getName() + ", your turn: ");
-                player2.setNumber(input.nextInt());
-                supposedNumber = player2.getNumber();
-                compare(unknownNumber, supposedNumber);
+                scanNumber(player1);
+                compare(player1);
+                if (supposedNumber != unknownNumber) {
+                    scanNumber(player2);
+                    compare(player2);
+                }
             }
-        } while (supposedNumber != unknownNumber);
-        if (player1.getNumber() == supposedNumber) {
+    }
+
+    private void compare(Player player) {
+        if (player.getNumber() < unknownNumber) {
+            System.out.println("Your number is less!");
+        } else if (player.getNumber() > unknownNumber) {
+            System.out.println("Your number is bigger!");
+        } else if (player.getNumber() == unknownNumber) {
             System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
-            + "\nThe winner is "  + player1.getName());
-        } else{
-            System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
-            + "\nThe winner is "  + player2.getName());
+            + "\nThe winner is "  + player.getName());
         }
     }
 
-    private void compare(int unknownNumber, int supposedNumber) {
-        if (supposedNumber < unknownNumber) {
-            System.out.println("Your number is less!");
-        } else if (supposedNumber > unknownNumber) {
-            System.out.println("Your number is bigger!");
-        }
+    private void scanNumber(Player player) {
+        System.out.print(player.getName() + ", your turn: ");
+        player.setNumber(input.nextInt());
+        supposedNumber = player.getNumber();
     }
 }
