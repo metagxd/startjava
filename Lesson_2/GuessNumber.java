@@ -17,31 +17,32 @@ public class GuessNumber {
         System.out.println("Guess number from 1 to 100.");
         while (true) {
             inputNumber(player1);
-            compare(player1);
-            if (player1.getNumber() == unknownNumber) {
+            if (compare(player1)) {
                 break;
             }
             inputNumber(player2);
-            compare(player2);
-            if (player2.getNumber() == unknownNumber) {
+            if (compare(player2)) {
                 break;
             }
-        }
-    }
-
-    private void compare(Player player) {
-        if (player.getNumber() < unknownNumber) {
-            System.out.println("Your number is less!");
-        } else if (player.getNumber() > unknownNumber) {
-            System.out.println("Your number is bigger!");
-        } else if (player.getNumber() == unknownNumber) {
-            System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
-            + "\nThe winner is "  + player.getName());
         }
     }
 
     private void inputNumber(Player player) {
         System.out.print(player.getName() + ", your turn: ");
         player.setNumber(input.nextInt());
+    }
+
+    private boolean compare(Player player) {
+        if (player.getNumber() < unknownNumber) {
+            System.out.println("Your number is less!");
+            return false;
+        } else if (player.getNumber() > unknownNumber) {
+            System.out.println("Your number is bigger!");
+            return false;
+        } else if (player.getNumber() == unknownNumber) {
+            System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
+            + "\nThe winner is "  + player.getName());
+        }
+        return true;
     }
 }
