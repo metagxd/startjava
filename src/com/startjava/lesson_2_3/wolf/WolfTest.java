@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.wolf;
+
 public class WolfTest {
 
     public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class WolfTest {
         wolfOne.setColor("white");
         wolfOne.setGender("female");
 
-        System.out.println("We found wolf, we call it " + wolfOne.getName() + ".\nIt wolf is " + wolfOne.getAge() + " years old, " + 
+        System.out.println("We found wolf, we call it " + wolfOne.getName() + ".\nIt wolf is " + wolfOne.getAge() + " years old, " +
         wolfOne.getColor() + " color, it weight is " + wolfOne.getWeight() + ", and whe shure that it " + wolfOne.getGender() + ".");
 
         if (wolfOne.howl()) {
