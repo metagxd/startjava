@@ -5,7 +5,17 @@ public class Calculator {
     private int firstNumber;
     private int secondNumber;
     private char operation;
-
+    String[] expression = new String[3];
+    //TODO
+    //- replace methods to Math - methods
+    //- add String.split()
+    //- add history in array
+    public void scanExpression(String string) {
+        this.expression = string.split(" ", 3);
+        for (String i : expression) {
+            System.out.println(i);
+        }
+    }
     public boolean setFirstNumber(int firstNumber) {
         if (firstNumber <= 0) {
             System.out.println("Incorrect number!");
@@ -39,25 +49,22 @@ public class Calculator {
 
         switch(operation) {
             case '+':
-                result = firstNumber + secondNumber;
+                result = Math.addExact(firstNumber, secondNumber);
                 break;
             case '-':
-                result = firstNumber - secondNumber;
+                result = Math.subtractExact(firstNumber, secondNumber);
                 break;
             case '*':
-                result = firstNumber * secondNumber;
+                result = Math.multiplyExact(firstNumber, secondNumber);
                 break;
             case '/':
                 result = firstNumber / secondNumber;
                 break;
             case '%':
-                result = firstNumber % secondNumber;
+                result =(int) Math.IEEEremainder(firstNumber, secondNumber);
                 break;
             case '^':
-                result = 1;
-                for (int i = 1; i <= secondNumber; i++) {//цикл возведения в степень
-                    result *= firstNumber;
-                }
+                result =(int) Math.pow(firstNumber, secondNumber);
                 break;
             default:
                 result = 0;
