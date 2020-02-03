@@ -6,31 +6,23 @@ public class Calculator {
     private int secondNumber;
     private char operation;
 
-    public boolean setFirstNumber(int firstNumber) {
-        if (firstNumber <= 0) {
-            System.out.println("Incorrect number!");
+    public boolean scanExpression(String string) {
+        String[] expression;
+        expression = string.split(" ", 3);
+        if (Integer.parseInt(expression[0]) <= 0) {
+            System.out.println("Incorrect first number!");
+            return false;
+        } else if (!(expression[1].charAt(0) == '+' || expression[1].charAt(0) == '-' || expression[1].charAt(0) == '*'
+            || expression[1].charAt(0) == '/' || expression[1].charAt(0) == '%' || expression[1].charAt(0) == '^')) {
+                System.out.println("Incorrect math operation!");
+                return false;
+        } else if (Integer.parseInt(expression[2]) <= 0) {
+            System.out.println("Incorrect second number!");
             return false;
         }
-        this.firstNumber = firstNumber;
-        return true;
-    }
-
-    public boolean setSecondNumber(int secondNumber) {
-        if (secondNumber <= 0) {
-            System.out.println("Incorrect number!");
-            return false;
-        }
-        this.secondNumber = secondNumber;
-        return true;
-    }
-
-    public boolean setOperation(char operation) {
-        if (!(operation == '+' || operation == '-' || operation == '*'
-            || operation == '/' || operation == '%' || operation == '^')) {
-            System.out.println("Incorrect math operation!");
-            return false;
-        }
-        this.operation = operation;
+        this.firstNumber = Integer.parseInt(expression[0]);
+        this.operation = expression[1].charAt(0);
+        this.secondNumber =Integer.parseInt(expression[2]);
         return true;
     }
 
@@ -39,25 +31,22 @@ public class Calculator {
 
         switch(operation) {
             case '+':
-                result = firstNumber + secondNumber;
+                result = Math.addExact(firstNumber, secondNumber);
                 break;
             case '-':
-                result = firstNumber - secondNumber;
+                result = Math.subtractExact(firstNumber, secondNumber);
                 break;
             case '*':
-                result = firstNumber * secondNumber;
+                result = Math.multiplyExact(firstNumber, secondNumber);
                 break;
             case '/':
                 result = firstNumber / secondNumber;
                 break;
             case '%':
-                result = firstNumber % secondNumber;
+                result =(int) Math.IEEEremainder(firstNumber, secondNumber);
                 break;
             case '^':
-                result = 1;
-                for (int i = 1; i <= secondNumber; i++) {//цикл возведения в степень
-                    result *= firstNumber;
-                }
+                result =(int) Math.pow(firstNumber, secondNumber);
                 break;
             default:
                 result = 0;

@@ -11,32 +11,9 @@ public class CalculatorTest {
         String answer;
 
         do {
-            do {
-                System.out.print("Type first number: ");
-                if (input.hasNextInt()) {
-                    number = input.nextInt();
-                } else {
-                    System.out.println("Error!");
-                    input.next();
-                }
-            } while (!calculator.setFirstNumber(number));
-
-            do {
-                System.out.print("Type operation: ");
-            } while (!(calculator.setOperation((input.next()).charAt(0))));
-
-            do {
-                System.out.print("Type second number: ");
-                if (input.hasNextInt()) {
-                    number = input.nextInt();
-                } else {
-                    System.out.println("Error!");
-                    number = 0;
-                    input.next();
-                }
-            } while (!calculator.setSecondNumber(number));
+            System.out.print("Type expression: ");
+            while (!calculator.scanExpression(input.nextLine()));
             System.out.println("Result: " + calculator.calculate());
-
             do {
                 System.out.print("Continue? [Yes/No]: ");
                 answer = input.next();
@@ -51,6 +28,7 @@ public class CalculatorTest {
                     break;
                 }
             } while (!("No".equals(answer) || "Yes".equals(answer)));
+            input.nextLine();
         } while (!"No".equals(answer));
     }
 }
