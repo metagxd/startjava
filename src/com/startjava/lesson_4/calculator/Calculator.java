@@ -5,10 +5,10 @@ public class Calculator {
     private int firstNumber;
     private int secondNumber;
     private char operation;
-    private String[] expression = new String[3];
 
     public boolean scanExpression(String string) {
-        this.expression = string.split(" ", 3);
+        String[] expression;
+        expression = string.split(" ", 3);
         if (Integer.parseInt(expression[0]) <= 0) {
             System.out.println("Incorrect first number!");
             return false;
