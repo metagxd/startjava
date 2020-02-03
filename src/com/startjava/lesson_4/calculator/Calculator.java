@@ -5,42 +5,24 @@ public class Calculator {
     private int firstNumber;
     private int secondNumber;
     private char operation;
-    String[] expression = new String[3];
-    //TODO
-    //- replace methods to Math - methods
-    //- add String.split()
-    //- add history in array
-    public void scanExpression(String string) {
+    private String[] expression = new String[3];
+
+    public boolean scanExpression(String string) {
         this.expression = string.split(" ", 3);
-        for (String i : expression) {
-            System.out.println(i);
-        }
-    }
-    public boolean setFirstNumber(int firstNumber) {
-        if (firstNumber <= 0) {
-            System.out.println("Incorrect number!");
+        if (Integer.parseInt(expression[0]) <= 0) {
+            System.out.println("Incorrect first number!");
+            return false;
+        } else if (!(expression[1].charAt(0) == '+' || expression[1].charAt(0) == '-' || expression[1].charAt(0) == '*'
+            || expression[1].charAt(0) == '/' || expression[1].charAt(0) == '%' || expression[1].charAt(0) == '^')) {
+                System.out.println("Incorrect math operation!");
+                return false;
+        } else if (Integer.parseInt(expression[2]) <= 0) {
+            System.out.println("Incorrect second number!");
             return false;
         }
-        this.firstNumber = firstNumber;
-        return true;
-    }
-
-    public boolean setSecondNumber(int secondNumber) {
-        if (secondNumber <= 0) {
-            System.out.println("Incorrect number!");
-            return false;
-        }
-        this.secondNumber = secondNumber;
-        return true;
-    }
-
-    public boolean setOperation(char operation) {
-        if (!(operation == '+' || operation == '-' || operation == '*'
-            || operation == '/' || operation == '%' || operation == '^')) {
-            System.out.println("Incorrect math operation!");
-            return false;
-        }
-        this.operation = operation;
+        this.firstNumber = Integer.parseInt(expression[0]);
+        this.operation = expression[1].charAt(0);
+        this.secondNumber =Integer.parseInt(expression[2]);
         return true;
     }
 
