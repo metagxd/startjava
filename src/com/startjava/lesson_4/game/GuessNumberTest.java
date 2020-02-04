@@ -19,7 +19,7 @@ public class GuessNumberTest {
         do {
             game.start();
             do {
-                System.out.print("Once again? [Yes/No]: ");
+                System.out.print("\nOnce again? [Yes/No]: ");
                 answer = input.next();
                 switch (answer) {
                 case "No":

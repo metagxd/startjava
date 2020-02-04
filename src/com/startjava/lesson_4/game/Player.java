@@ -3,7 +3,7 @@ package com.startjava.lesson_4.game;
 public class Player {
 
     private String name;
-    private int[] numbers = new int[10];
+    private int[] numbers = new int[5];
     private int attemptCount;
 
     public Player(String name) {
@@ -14,19 +14,35 @@ public class Player {
         return name;
     }
 
+    public int getMaxCountOfAttempts() {
+        return numbers.length;
+    }
+
+    public boolean isHaveAttempts() {
+        if (attemptCount < numbers.length) {
+            return true;
+        }
+        return false;
+    }
+
+    public void addNumber(int number) {
+        numbers[attemptCount] = number;
+        attemptCount++;
+    }
+
     public int getNumber() {
         return numbers[attemptCount-1];
     }
 
-    public void addNumber(int number) {
-        while (true) {
-            if (attemptCount == numbers.length - 1) {
-                System.out.println("Attempts is over!");
-                break;
-            }
-            numbers[attemptCount] = number;
-            attemptCount++;
-            break;
+    public int getAttemptCount() {
+        return attemptCount;
+    }
+
+    public String getListOfNumbers() {
+        String numbers = "";
+        for (int i = 0; i < attemptCount; i++) {
+            numbers += this.numbers[i] + " ";
         }
+        return "Entered numbers: " + numbers;
     }
 }
