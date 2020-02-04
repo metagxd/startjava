@@ -32,7 +32,7 @@ public class GuessNumber {
 
     private void inputNumber(Player player) {
         System.out.print(player.getName() + ", your turn: ");
-        player.setNumber(input.nextInt());
+        player.addNumber(input.nextInt());
     }
 
     private boolean compare(Player player) {

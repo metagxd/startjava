@@ -3,7 +3,6 @@ package com.startjava.lesson_4.game;
 public class Player {
 
     private String name;
-    private int number;
     private int[] numbers = new int[10];
     private int attemptCount;
 
@@ -15,12 +14,8 @@ public class Player {
         return name;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public int getNumber() {
-        return number;
+        return numbers[attemptCount-1];
     }
 
     public void addNumber(int number) {
@@ -30,6 +25,8 @@ public class Player {
                 break;
             }
             numbers[attemptCount] = number;
+            attemptCount++;
+            break;
         }
     }
 }
