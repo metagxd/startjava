@@ -13,12 +13,13 @@ public class GuessNumber {
     }
 
     public void start() {
+        reset();
         unknownNumber = (int) (Math.random() * 101);
         System.out.println(unknownNumber);
         System.out.println("Guess number from 1 to 100.");
         System.out.println("Number of attempts: " + player1.getMaxCountOfAttempts());
-        
-        while (true) {
+
+        do {
             if (player1.isHaveAttempts()) {
                 inputNumber(player1);
                 if (compare(player1)) {
@@ -35,7 +36,12 @@ public class GuessNumber {
                 System.out.println("Attempts is over!");
                 break;
             }
-        }
+        } while (true);
+    }
+
+    private void reset() {
+        player1.resetData();
+        player2.resetData();
     }
 
     private void inputNumber(Player player) {
@@ -53,7 +59,7 @@ public class GuessNumber {
         } else if (player.getNumber() == unknownNumber) {
             System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
             + "\nThe winner is "  + player.getName() + ", with the " + player.getAttemptCount() + " attempt.");
-            System.out.println(player.getListOfNumbers());
+            System.out.println("Your numbers: " + player.getListOfNumbers());
         }
         return true;
     }

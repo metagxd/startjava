@@ -1,9 +1,11 @@
 package com.startjava.lesson_4.game;
 
+import java.util.Arrays;
+
 public class Player {
 
     private String name;
-    private int[] numbers = new int[5];
+    private int[] numbers = new int[10];
     private int attemptCount;
 
     public Player(String name) {
@@ -14,15 +16,19 @@ public class Player {
         return name;
     }
 
+    public void resetData() {
+        if (attemptCount > 0) {
+        Arrays.fill(numbers, 0, attemptCount, 0);
+        }
+        attemptCount = 0;
+    }
+
     public int getMaxCountOfAttempts() {
         return numbers.length;
     }
 
     public boolean isHaveAttempts() {
-        if (attemptCount < numbers.length) {
-            return true;
-        }
-        return false;
+        return attemptCount < numbers.length;
     }
 
     public void addNumber(int number) {
@@ -39,10 +45,11 @@ public class Player {
     }
 
     public String getListOfNumbers() {
-        String numbers = "";
-        for (int i = 0; i < attemptCount; i++) {
-            numbers += this.numbers[i] + " ";
+        int[] enteredNumbers = Arrays.copyOf(numbers, attemptCount);
+        String listOfNumber = "";
+        for (int number : enteredNumbers) {
+            listOfNumber += number + " ";
         }
-        return "Entered numbers: " + numbers;
+        return listOfNumber;
     }
 }
