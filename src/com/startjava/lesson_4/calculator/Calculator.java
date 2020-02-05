@@ -49,7 +49,7 @@ public class Calculator {
                 result = (int) Math.pow(firstNumber, secondNumber);
                 break;
             default:
-                System.out.println("Calculation error!");;
+                System.out.println("Calculation error!");
                 break;
         }
         return result;
