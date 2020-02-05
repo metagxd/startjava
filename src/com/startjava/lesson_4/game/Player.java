@@ -15,14 +15,16 @@ public class Player {
     public String getName() {
         return name;
     }
-
-    public void resetData() {
-        if (attemptCount > 0) {
-        Arrays.fill(numbers, 0, attemptCount, 0);
-        }
+    
+    public void resetAttempt() {
         attemptCount = 0;
     }
-
+    
+    public void resetNumbers() {
+        if (attemptCount > 0) {
+            Arrays.fill(numbers, 0, attemptCount, 0);
+        }
+    }
     public int getMaxCountOfAttempts() {
         return numbers.length;
     }
@@ -44,12 +46,8 @@ public class Player {
         return attemptCount;
     }
 
-    public String getListOfNumbers() {
+    public int[] getEnteredNumbers() {
         int[] enteredNumbers = Arrays.copyOf(numbers, attemptCount);
-        String listOfNumber = "";
-        for (int number : enteredNumbers) {
-            listOfNumber += number + " ";
-        }
-        return listOfNumber;
+        return enteredNumbers;
     }
 }

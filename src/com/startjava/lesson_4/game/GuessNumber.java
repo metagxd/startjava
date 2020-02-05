@@ -1,6 +1,7 @@
 package com.startjava.lesson_4.game;
 
 import java.util.Scanner;
+
 public class GuessNumber {
     private Player player1;
     private Player player2;
@@ -15,7 +16,7 @@ public class GuessNumber {
     public void start() {
         reset();
         unknownNumber = (int) (Math.random() * 101);
-        System.out.println(unknownNumber);
+        
         System.out.println("Guess number from 1 to 100.");
         System.out.println("Number of attempts: " + player1.getMaxCountOfAttempts());
 
@@ -37,11 +38,27 @@ public class GuessNumber {
                 break;
             }
         } while (true);
+        showEnteredNumbers();
     }
 
     private void reset() {
-        player1.resetData();
-        player2.resetData();
+        player1.resetAttempt();
+        player1.resetNumbers();
+        player2.resetAttempt();
+        player2.resetNumbers();
+    }
+
+    private String getListOfNumbers(Player player) {
+        String listOfnumbers = "";
+        for (int number : player.getEnteredNumbers()) {
+            listOfnumbers += number + " ";
+        }
+        return listOfnumbers;
+    }
+
+    private void showEnteredNumbers() {
+        System.out.println(player1.getName() + "'s number: " + getListOfNumbers(player1));
+        System.out.println(player2.getName() + "'s number: " + getListOfNumbers(player2));
     }
 
     private void inputNumber(Player player) {
@@ -50,17 +67,15 @@ public class GuessNumber {
     }
 
     private boolean compare(Player player) {
-        if (player.getNumber() < unknownNumber) {
-            System.out.println("Your number is less!");
-            return false;
-        } else if (player.getNumber() > unknownNumber) {
-            System.out.println("Your number is bigger!");
-            return false;
-        } else if (player.getNumber() == unknownNumber) {
+        if (player.getNumber() == unknownNumber) {
             System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
             + "\nThe winner is "  + player.getName() + ", with the " + player.getAttemptCount() + " attempt.");
-            System.out.println("Your numbers: " + player.getListOfNumbers());
+            return true;
+        } else if (player.getNumber() > unknownNumber) {
+            System.out.println("Your number is bigger!");
+        } else if (player.getNumber() < unknownNumber) {
+            System.out.println("Your number is less!");
         }
-        return true;
+        return false;
     }
 }
