@@ -13,9 +13,9 @@ public class Calculator {
             System.out.println("Incorrect first number!");
             return false;
         } else if (!(operation == '+' || operation == '-' || operation == '*'
-            || operation == '/' || operation == '%' || operation == '^')) {
-                System.out.println("Incorrect math operation!");
-                return false;
+                || operation == '/' || operation == '%' || operation == '^')) {
+            System.out.println("Incorrect math operation!");
+            return false;
         } else if (Integer.parseInt(expression[2]) <= 0) {
             System.out.println("Incorrect second number!");
             return false;
@@ -29,7 +29,7 @@ public class Calculator {
     public int calculate() {
         int result = 0;
 
-        switch(operation) {
+        switch (operation) {
             case '+':
                 result = Math.addExact(firstNumber, secondNumber);
                 break;

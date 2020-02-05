@@ -17,14 +17,14 @@ public class CalculatorTest {
                 System.out.print("Continue? [Yes/No]: ");
                 answer = input.next();
                 switch (answer) {
-                case "No":
-                    System.out.println("Close...");
-                    break;
-                case "Yes":
-                    break;
-                default:
-                    System.out.println("Try again.");
-                    break;
+                    case "No":
+                        System.out.println("Close...");
+                        break;
+                    case "Yes":
+                        break;
+                    default:
+                        System.out.println("Try again.");
+                        break;
                 }
             } while (!("No".equals(answer) || "Yes".equals(answer)));
             input.nextLine();

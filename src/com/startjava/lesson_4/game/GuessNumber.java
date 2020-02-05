@@ -6,7 +6,7 @@ public class GuessNumber {
     private Player player1;
     private Player player2;
     private int unknownNumber;
-    private Scanner input  = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -16,7 +16,7 @@ public class GuessNumber {
     public void start() {
         reset();
         unknownNumber = (int) (Math.random() * 101);
-        
+
         System.out.println("Guess number from 1 to 100.");
         System.out.println("Number of attempts: " + player1.getMaxCountOfAttempts());
 
@@ -48,17 +48,17 @@ public class GuessNumber {
         player2.resetNumbers();
     }
 
-    private String getListOfNumbers(Player player) {
-        String listOfnumbers = "";
+    private String getNumbersList(Player player) {
+        String numbersList = "";
         for (int number : player.getEnteredNumbers()) {
-            listOfnumbers += number + " ";
+            numbersList += number + " ";
         }
-        return listOfnumbers;
+        return numbersList;
     }
 
     private void showEnteredNumbers() {
-        System.out.println(player1.getName() + "'s number: " + getListOfNumbers(player1));
-        System.out.println(player2.getName() + "'s number: " + getListOfNumbers(player2));
+        System.out.println(player1.getName() + "'s number: " + getNumbersList(player1));
+        System.out.println(player2.getName() + "'s number: " + getNumbersList(player2));
     }
 
     private void inputNumber(Player player) {
@@ -69,7 +69,7 @@ public class GuessNumber {
     private boolean compare(Player player) {
         if (player.getNumber() == unknownNumber) {
             System.out.println("Congratulation! " + "Unknown number: " + unknownNumber
-            + "\nThe winner is "  + player.getName() + ", with the " + player.getAttemptCount() + " attempt.");
+                    + "\nThe winner is " + player.getName() + ", with the " + player.getAttemptCount() + " attempt.");
             return true;
         } else if (player.getNumber() > unknownNumber) {
             System.out.println("Your number is bigger!");
