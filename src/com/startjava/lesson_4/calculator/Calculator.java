@@ -6,28 +6,28 @@ public class Calculator {
     private int secondNumber;
     private char operation;
 
-    public boolean scanExpression(String string) {
-        String[] expression;
-        expression = string.split(" ", 3);
+    public boolean splitExpression(String string) {
+        String[] expression = string.split(" ", 3);
+        char operation = expression[1].charAt(0);
         if (Integer.parseInt(expression[0]) <= 0) {
             System.out.println("Incorrect first number!");
             return false;
-        } else if (!(expression[1].charAt(0) == '+' || expression[1].charAt(0) == '-' || expression[1].charAt(0) == '*'
-            || expression[1].charAt(0) == '/' || expression[1].charAt(0) == '%' || expression[1].charAt(0) == '^')) {
+        } else if (!(operation == '+' || operation == '-' || operation == '*'
+            || operation == '/' || operation == '%' || operation == '^')) {
                 System.out.println("Incorrect math operation!");
                 return false;
         } else if (Integer.parseInt(expression[2]) <= 0) {
             System.out.println("Incorrect second number!");
             return false;
         }
-        this.firstNumber = Integer.parseInt(expression[0]);
-        this.operation = expression[1].charAt(0);
-        this.secondNumber =Integer.parseInt(expression[2]);
+        firstNumber = Integer.parseInt(expression[0]);
+        this.operation = operation;
+        secondNumber = Integer.parseInt(expression[2]);
         return true;
     }
 
     public int calculate() {
-        int result;
+        int result = 0;
 
         switch(operation) {
             case '+':
@@ -49,7 +49,7 @@ public class Calculator {
                 result =(int) Math.pow(firstNumber, secondNumber);
                 break;
             default:
-                result = 0;
+                System.out.println("Calculation error!");;
                 break;
         }
         return result;

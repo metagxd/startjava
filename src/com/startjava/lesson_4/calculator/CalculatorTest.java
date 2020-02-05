@@ -11,7 +11,7 @@ public class CalculatorTest {
 
         do {
             System.out.print("Type expression: ");
-            while (!calculator.scanExpression(input.nextLine()));
+            while (!calculator.splitExpression(input.nextLine()));
             System.out.println("Result: " + calculator.calculate());
             do {
                 System.out.print("Continue? [Yes/No]: ");
