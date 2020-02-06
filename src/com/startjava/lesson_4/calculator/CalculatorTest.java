@@ -29,5 +29,6 @@ public class CalculatorTest {
             } while (!("No".equals(answer) || "Yes".equals(answer)));
             input.nextLine();
         } while (!"No".equals(answer));
+        input.close();
     }
 }

@@ -14,7 +14,7 @@ public class GuessNumber {
     }
 
     public void start() {
-        reset();
+        init();
         unknownNumber = (int) (Math.random() * 101);
 
         System.out.println("Guess number from 1 to 100.");
@@ -38,27 +38,23 @@ public class GuessNumber {
                 break;
             }
         } while (true);
-        showEnteredNumbers();
+        showEnteredNumbers(player1);
+        showEnteredNumbers(player2);
     }
 
-    private void reset() {
+    private void init() {
         player1.resetAttempt();
         player1.resetNumbers();
         player2.resetAttempt();
         player2.resetNumbers();
     }
 
-    private String getNumbersList(Player player) {
+    private void showEnteredNumbers(Player player) {
         String numbersList = "";
         for (int number : player.getEnteredNumbers()) {
             numbersList += number + " ";
         }
-        return numbersList;
-    }
-
-    private void showEnteredNumbers() {
-        System.out.println(player1.getName() + "'s number: " + getNumbersList(player1));
-        System.out.println(player2.getName() + "'s number: " + getNumbersList(player2));
+        System.out.println(player.getName() + "'s number: " + numbersList);
     }
 
     private void inputNumber(Player player) {
