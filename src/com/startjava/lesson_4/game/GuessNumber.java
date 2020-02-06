@@ -50,11 +50,10 @@ public class GuessNumber {
     }
 
     private void showEnteredNumbers(Player player) {
-        String numbersList = "";
+        System.out.print("\n" + player.getName() + "'s number: ");
         for (int number : player.getEnteredNumbers()) {
-            numbersList += number + " ";
+            System.out.print(number + " ");
         }
-        System.out.println(player.getName() + "'s number: " + numbersList);
     }
 
     private void inputNumber(Player player) {
